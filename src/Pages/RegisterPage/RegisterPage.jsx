@@ -5,20 +5,18 @@ import { useWeb3React } from "@web3-react/core";
 import { injected } from "./../../wallet/Connect";
 import { ethers } from 'ethers';
 
-import  contractABI  from './contractABI.json';
-import  BUSD_ABI  from './BUSD_ABI.json';
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 
-import web3 from "web3";
 const RegisterPage = () => {
-
+    const navigate = useNavigate();
     const [spons, setSponsor] = useState("");
 
-    const contract = "0x644ffC0e3DaAe69DD5f38e12B9651dCD0b818FAF";
-    const BUSD = "0x325a4deFFd64C92CF627Dd72d118f1b8361c5691";
-     
-    const AccountAddress = (str) => {
-        return str.length;
-    }
+    const contract = useSelector((state) => state.contract.value.contract);//"0xe41C82120c8363a118A700718858A406aca63598";
+    const BUSD = useSelector((state) => state.contract.value.BUSD);
+    const contractABI = useSelector((state) => state.contract.value.contractABI);
+    const BUSD_ABI = useSelector((state) => state.contract.value.BUSD_ABI);
+    
     const checkWalletIsConnected = () => {
         const { ethereum } = window;
         if (!ethereum) {
@@ -49,14 +47,7 @@ const RegisterPage = () => {
             console.log(err);
         }
     }
-    const { active, account, library, activate, deactivate } = useWeb3React();
-    async function connect() {
-        try {
-            await activate(injected);
-        } catch (ex) {
-            console.log(ex)
-        }
-    }
+    
 
     async function increaseAllowance() {
         try {
@@ -91,6 +82,8 @@ const RegisterPage = () => {
 
                 await inc.wait();
                 console.log("Tr Hash : " + inc.hash);
+                setMsg("Register Success.");
+                navigate("/dashboard");
             }
         } catch (error) {
             setMsg("Error : " + error);
@@ -116,7 +109,7 @@ const RegisterPage = () => {
                             <span style={{ color: "green" }}>{msg}</span>
                             <h3>Automatic registration</h3>
                             <p>Check the ID of Your inviter. <br></br>You can edit before proceed to payment.</p>
-                            <input type="text" placeholder='Enter Sponsor ID.' onChange={(e) => setSponsor(e.target.value)} id="sponsor" />
+                            <input type="text" placeholder="Enter Sponsor ID." onChange={(e) => setSponsor(e.target.value)} id="sponsor" />
                             <button className="viewing" onClick={increaseAllowance}>To Register</button>
                             <p className='m-0'>Already have account?</p>
                             { /*<Link to="/connectwallet">Login</Link>*/ }

@@ -7,6 +7,8 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Web3ReactProvider } from '@web3-react/core'
 import Web3 from 'web3'
 
+import store from '../src/store'
+import { Provider } from 'react-redux'
 
 
 
@@ -17,7 +19,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Web3ReactProvider getLibrary={getLibrary}>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </Web3ReactProvider>
   </React.StrictMode>
 );
