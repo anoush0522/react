@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./RegisterPage.css"
-import { Container, Row, Col } from "react-bootstrap"
-import { useWeb3React } from "@web3-react/core";
-import { injected } from "./../../wallet/Connect";
+import { Container, Row, Col } from "react-bootstrap" 
+
 import { ethers } from 'ethers';
 
 import { useSelector, useDispatch } from 'react-redux'
@@ -17,6 +16,8 @@ const RegisterPage = () => {
     const contractABI = useSelector((state) => state.contract.value.contractABI);
     const BUSD_ABI = useSelector((state) => state.contract.value.BUSD_ABI);
     
+     
+
     const checkWalletIsConnected = () => {
         const { ethereum } = window;
         if (!ethereum) {

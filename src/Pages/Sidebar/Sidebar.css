@@ -1,0 +1,110 @@
+.menu {
+    color: var(--textColor);
+    font-size: 28px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.imgCrose {
+    display: flex;
+    justify-content: space-between;
+}
+
+.imgCrose i {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 29px;
+    font-weight: 600;
+    display: none;
+}
+
+.sidebar {
+    width: 280px;
+    background: var(--bgColor);
+    min-height: 100vh;
+    padding: 0px 15px;
+    transition: all 0.4s;
+}
+
+.sidebar img {
+    width: 70px;
+    filter: brightness(200%);
+    animation: rotation 5s linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+.sidebar hr {
+    height: 2px;
+    background: var(--textColor);
+    margin-top: -3px;
+}
+
+.sideItems {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+#active,
+.sideItems:hover {
+    background: #3C4564;
+}
+
+.sideItems i {
+    color: var(--textColor);
+    font-size: 17px;
+    font-weight: bold;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.sideItems p {
+    margin: 0;
+    font-size: 16px;
+    color: var(--textColor);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.TopnavContent {
+    justify-content: space-between;
+}
+
+.logout {
+    color: white;
+    font-size: 30px;
+    display: flex;
+    margin-right: 10px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.logout:hover {
+    color: rgb(107, 105, 105);
+
+}
+
+@media (max-width: 767px) {
+    .imgCrose i {
+        display: flex;
+    }
+
+    .sidebar {
+        position: fixed;
+        z-index: 99;
+    }
+}
