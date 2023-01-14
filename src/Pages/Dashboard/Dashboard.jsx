@@ -57,7 +57,8 @@ const Dashboard = () => {
     }
     var address = contract
     var sponsorId = sponsor
-    const [contractAddress, setContractAddress] = useState(address);
+    const [contractAddress, setContractAddress] = useState(address);    
+    
     const [sponsorAddress, setSponsorAddress] = useState(sponsorId);
     useEffect(() => {
         if (width < "1000") {
