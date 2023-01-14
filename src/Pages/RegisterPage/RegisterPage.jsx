@@ -7,7 +7,10 @@ import { ethers } from 'ethers';
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 
+
 const RegisterPage = () => {
+
+    
     const navigate = useNavigate();
     const [spons, setSponsor] = useState("");
 
@@ -19,6 +22,7 @@ const RegisterPage = () => {
      
 
     const checkWalletIsConnected = () => {
+        
         const { ethereum } = window;
         if (!ethereum) {
             console.log("Make sure you have meta masked installed");

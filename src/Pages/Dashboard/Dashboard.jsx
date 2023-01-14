@@ -14,7 +14,8 @@ import PoolBg from "./../../Images/poolbg.jpg"
 import { GiMoneyStack } from "react-icons/gi";
 import { ethers } from 'ethers';
 
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
+
 
 function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;
@@ -38,6 +39,8 @@ function useWindowDimensions() {
 
 const Dashboard = () => {
 
+    const dispatch = useDispatch()
+     
     var currstate1;
     const [msg, setMsg] = useState("");
     const contract = useSelector((state) => state.contract.value.contract);//"0xe41C82120c8363a118A700718858A406aca63598";
@@ -81,6 +84,8 @@ const Dashboard = () => {
 
 
     const checkWalletIsConnected = () => {
+         
+         
         const { ethereum } = window;
         if (!ethereum) {
             console.log("Make sure you have meta masked installed");
